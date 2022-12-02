@@ -16,14 +16,14 @@ def index():
     return render_template("index.html")
 
 #Endpoint for Login
-@bp.route("/login", methods=["GET", "POST"])
+@bp.route("/sign_in", methods=["GET", "POST"])
 def login():
     """Default endpoint for the system"""
-    return render_template("login.html")
+    return render_template("sign_in.html")
 
 #Endpoint for Register
-@bp.route("/register", methods=["GET", "POST"])
+@bp.route("/sign_up", methods=["GET", "POST"])
 def register():
     """Default endpoint for the system"""
-    return render_template("register.html")
+    return render_template("sign_up.html")
     
