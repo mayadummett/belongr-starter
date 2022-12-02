@@ -10,7 +10,6 @@ from webapp.database import User
 bp = Blueprint('group1', __name__, url_prefix='/')
 
 #Endpoint for the Home Page
-
 @bp.route("/index", methods=["GET", "POST"])
 def index():
     """Default endpoint for the system"""
@@ -27,9 +26,4 @@ def login():
 def register():
     """Default endpoint for the system"""
     return render_template("register.html")
-
-
-
-
-
     
