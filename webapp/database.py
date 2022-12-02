@@ -44,7 +44,7 @@ class Student_Organization(Base):
         return f'<User {self.id, self.name!r}>'
 
 # This is the table of ratings.
-class Ratings(Base):
+class Rating(Base):
     __tablename__ = 'ratings'
     __table_args__ = {'extend_existing': True} 
 
