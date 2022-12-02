@@ -3,7 +3,7 @@
 }
 
 a {
-    color: #A51C30;
+    color: #7EA172;
     text-decoration: none;
 }
 
@@ -20,8 +20,8 @@ body {
 }
 
 button {
-    background-color: #A51C30;
-    border: 2px solid #A51C30;
+    background-color: #7EA172;
+    border: 2px solid #7EA172;
     border-radius: 20px;
     color: white;
     height: 60px;
@@ -86,7 +86,7 @@ footer {
 h1.home_header {
     font-size: 7em;
     font-weight: 900;
-    color: #A51C30;
+    color: #FFF;
     position: relative;
 }
 
@@ -307,6 +307,18 @@ h1.profile {
     color: white;
 }
 
+/* Landing  */
+
+.home_header {
+    text-align: center;
+    margin-left: -15%;
+}
+
+.landing-buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: -15%;
+}
 /* Membership Request Page */
  
 #membership-title {
