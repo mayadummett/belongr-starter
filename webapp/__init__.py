@@ -11,7 +11,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'exploration.db'),
+        DATABASE=os.path.join(app.instance_path, 'belongr.db'),
     )
 
     db = SQLAlchemy(app)
@@ -34,8 +34,8 @@ def create_app(test_config=None):
     def index():
         return render_template("index.html")
 
-    from . import group1
-    app.register_blueprint(group1.bp)
+    from . import application
+    app.register_blueprint(application.bp)
 
     db.init_app(app)
 
