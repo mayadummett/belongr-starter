@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<script>
+    function register(event)
+            {
+                let button = event.target;
+
+                let confirmpswd = document.querySelector('#confirmpswd');
+
+                let originalpswd = document.querySelector('#pswd');
+
+                if (confirmpswd.value != originalpswd.value)
+                {
+                    confirmpswd.style.color = "Red";
+                    document.querySelector('#checkpswd').innerHTML = "Passwords don't match!";
+                }
+                else
+                {
+                    location.replace("/example");
+                }
+            }
+</script>
+<head>
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Registration Page</title>
+</head>
+<body id="registerbody">
+    <h1 id="titlereg">Register</h1>
+    <br><br>
+    <div id = "formbody">
+        <h2>
+            Email
+            <input type="text" class = "textinput" placeholder = "Email"></input>
+        </h2>
+        <div>
+            <h2>
+                Password
+                <input type="text" class = "textinput" placeholder = "Password" id="pswd"></input>
+            </h2>
+            <div>
+                <h2>
+                    Confirm Password
+                    <input type="text" class = "textinput" placeholder = "Confirm Password" id="confirmpswd"></input>
+                    <p id="checkpswd"></p>
+                </h2>
+                    <br>
+                    <button onclick="register(event)" id="submit">Register</button>
+                    <button id="cancel" class = "buttonsecondary" onclick="window.location.href='/index'">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

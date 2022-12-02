@@ -1,0 +1,262 @@
+/* addmembers.html */
+
+button {
+    padding: 12px 32px;
+    font-size: 15px;
+    border: none;
+    background-color: #a51c30;
+    border-radius: 24px;
+    color: white;
+}
+
+#addMembBody {
+    font-family: 'Poppins';
+    background-color: #faf6f6;
+    padding: 3rem;
+    height: 100%;
+}
+
+#ClubMembName {
+    border: 1px solid #a51c30;
+    height: 50px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+
+#ClubMembEmail {
+    border: 1px solid #a51c30;
+    height: 50px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+#ClubHeader {
+    font-weight: 550;
+    color: black;
+}
+
+/* openmemb.html */ 
+
+#clubintrobutton {
+    text-align: center
+  }
+
+#openMembBody {
+    font-family: 'Poppins';
+    background-color: #faf6f6;
+    padding: 3rem;
+    height: 100%;
+}
+
+#OMClubInfo {
+    border: 1px solid #a51c30;
+    height: 100px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+#AppInfoHead {
+    font-weight: 550;
+    color: black;
+}
+
+/* completionbased.html */
+
+#clubintrobutton {
+    text-align: center
+  }
+
+#completionBasedBody {
+    font-family: 'Poppins';
+    background-color: #faf6f6;
+    padding: 3rem;
+    height: 100%; 
+}
+#completionCompInfo {
+    border: 1px solid #a51c30;
+    height: 100px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+#completionInfo {
+    font-weight: 550;
+    color: black;
+}
+
+/* compbased.html */
+
+#compbutton {
+    padding: 12px 32px;
+    font-size: 15px;
+    border: none;
+    background-color: #a51c30;
+    border-radius: 24px;
+    color: white;
+    text-align: center;
+}
+
+#compquestions {
+    line-height: 2em;
+}
+
+.interviews {
+    display: flex;
+}
+
+#intcheckboxno2 {
+    width: 30px;
+    height: 30px;
+    float: right;
+    position: relative;
+    top: -120px;
+}
+
+.checkboxes {
+    width: 28px;
+    height: 28px;
+    float: right;
+    position: relative;
+    top: -45px;
+    left: -40px;
+}
+
+#complengthnumb {
+    width: 30px;
+    height: 30px;
+    float: right;
+    position: relative;
+    top: -10px;
+    left: -40px;
+}
+#compbasedBody {
+    font-family: 'Poppins';
+    background-color: #faf6f6;
+    padding: 3rem;
+    height: 100%;
+}
+
+#compdescinput {
+    border: 1px solid #a51c30;
+    height: 150px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+#interviews, #interviewAmount, #resumeReq, #CompLength, #totaltimeReq {
+    color: black;
+}
+
+/* dani's changes */
+body {
+    font-family: 'Poppins';
+    background-color: #faf6f6;
+    padding: 3rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+input {
+    border: 1px solid #a51c30;
+    height: 50px;
+    width: 98%;
+    border-radius: 4px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+.smallinput {
+    border: 1px solid #a51c30;
+    height: 25px;
+    width: 10%;
+    border-radius: 4px;
+}
+
+.container {
+    margin-left: 282px;
+    margin-top: -57px;
+    padding: 2rem;
+    height: 93%;
+    width: 80%;
+ } 
+
+ .roundcontainer {
+    margin-left: 250px;
+    margin-top: 75px;
+    margin-bottom: 15px;
+    margin-right: 40px;
+    border: 2px solid #a51c30;
+    padding: 2rem;
+    background-color: #f9f6f5;
+    height: 78%;
+    width: 68%;
+    border-radius: 4px;
+ }
+
+ .heading {
+    font-weight: bold;
+    color: black;
+ }
+
+ .center, #centerbutton {
+   text-align: center;
+ }
+
+ .left {
+    margin-left: 100px;
+ }
+
+ .box {
+    border: 1px solid #a51c30;
+    height: 100px;
+    width: 98%;
+    border-radius: 4px;
+    padding-left: 1rem;
+    background-color: white;
+ }
+
+ #addtags {
+    border: none;
+    height: 50px;
+    width: 98%;
+    padding-left: 0.3rem;
+ }
+
+ #description {
+    height: 150px;
+ }
+
+.btn-primary {
+   background-color: #d9d9d9;
+   border-color: #666666;
+   color: black;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+   background-color: #a51c30;
+   border-color: white;
+   color: white;
+}
+
+.btn-check, #btn-check-outlined1, #btn-check-outlined2, #btn-check-outlined3 {
+   background-color: #a51c30;
+   border-color: #a51c30;
+   color: #a51c30;
+}
