@@ -5,7 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from webapp.database import db_session
 from webapp.database import User
 
-bp = Blueprint('group1', __name__, url_prefix='/')
+bp = Blueprint('application', __name__, url_prefix='/')
 
 #Endpoint for the Home Page
 @bp.route("/index", methods=["GET", "POST"])

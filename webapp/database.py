@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, ForeignKeyConstraint, LargeBinary
 from sqlalchemy.orm import relationship
 
 engine = create_engine('sqlite:///belongr.db')
@@ -51,25 +51,25 @@ class Rating(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey(User.id), nullable=False)
     student_organization_id = Column(Integer, ForeignKey(Student_Organization.id), nullable=False)
-    racial_identity_inclusivity = Column(Integer, nullable=True)
-    ethnic_identity_inclusivity = Column(Integer, nullable=True)
-    gender_identity_inclusivity = Column(Integer, nullable=True)
-    sexual_orientation_inclusivity = Column(Integer, nullable=True)
-    socioeconomic_status_inclusivity = Column(Integer, nullable=True)
-    religious_identity_inclusivity = Column(Integer, nullable=True)
-    disability_identity_inclusivity = Column(Integer, nullable=True)
+    racial_identity = Column(Integer, nullable=True)
+    ethnic_identity = Column(Integer, nullable=True)
+    gender_identity = Column(Integer, nullable=True)
+    sexual_orientation = Column(Integer, nullable=True)
+    socioeconomic_status = Column(Integer, nullable=True)
+    religious_identity = Column(Integer, nullable=True)
+    disability_identity = Column(Integer, nullable=True)
 
-    def __init__(self, user_id=None, student_organization_id=None, racial_identity_inclusivity=None, ethnic_identity_inclusivity=None, gender_identity_inclusivity=None, sexual_orientation_inclusivity=None, socioeconomic_status_inclusivity=None, religious_identity_inclusivity=None, disability_identity_inclusivity=None):
+    def __init__(self, user_id=None, student_organization_id=None, racial_identity=None, ethnic_identity=None, gender_identity=None, sexual_orientation=None, socioeconomic_status=None, religious_identity=None, disability_identity=None):
         self.user_id = user_id
         self.student_organization_id = student_organization_id
-        self.racial_identity_inclusivity = racial_identity_inclusivity
-        self.ethnic_identity_inclusivity = ethnic_identity_inclusivity
-        self.gender_identity_inclusivity = gender_identity_inclusivity
-        self.sexual_orientation_inclusivity = sexual_orientation_inclusivity
-        self.socioeconomic_status_inclusivity = socioeconomic_status_inclusivity
-        self.religious_identity_inclusivity = religious_identity_inclusivity
-        self.disability_identity_inclusivity = disability_identity_inclusivity
+        self.racial_identity = racial_identity
+        self.ethnic_identity = ethnic_identity
+        self.gender_identity = gender_identity
+        self.sexual_orientation = sexual_orientation
+        self.socioeconomic_status = socioeconomic_status
+        self.religious_identity = religious_identity
+        self.disability_identity = disability_identity
 
     def __repr__(self):
-        return f'<User {self.id, self.user_id, self.student_organization_id, self.racial_identity_inclusivity, self.ethnic_identity_inclusivity, self.gender_identity_inclusivity, self.sexual_orientation_inclusivity, self.socioeconomic_status_inclusivity, self.religious_identity_inclusivity, self.disability_identity_inclusivity!r}>'
+        return f'<User {self.id, self.user_id, self.student_organization_id, self.racial_identity, self.ethnic_identity, self.gender_identity, self.sexual_orientation, self.socioeconomic_status, self.religious_identity, self.disability_identity!r}>'
     
