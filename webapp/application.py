@@ -32,11 +32,6 @@ def sign_in():
 def sign_up():
     return render_template("sign_up.html")
 
-# This is the endpoint for the "Your Ratings" page.
-@bp.route("/your-ratings", methods=["GET", "POST"])
-def your_ratings():
-    return render_template("your_ratings.html")
-
 # This is the endpoint for the "Change Password" page.
 @bp.route("/change-password", methods=["GET", "POST"])
 def change_password():
@@ -63,3 +58,8 @@ def search_for_ratings():
 
     else:
         return render_template("search_for_ratings.html")
+
+# This is the endpoint for the "Your Ratings" page.
+@bp.route("/your-ratings", methods=["GET", "POST"])
+def your_ratings():
+    return render_template("your_ratings.html")
