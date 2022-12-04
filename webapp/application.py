@@ -1,13 +1,13 @@
 import functools
 
-from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
+from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from webapp.database import db_session
-from webapp.database import User
+from webapp.database import User, Student_Organization, Rating
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
-#Endpoint for the Home Page
+# This is the endpoint for the home page.
 @bp.route("/index", methods=["GET", "POST"])
 def index():
     """Default endpoint for the system"""
