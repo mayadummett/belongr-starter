@@ -7,22 +7,19 @@ from webapp.database import User, Student_Organization, Rating
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
-# This is the endpoint for the home page.
+# This is the endpoint for the "Index" page.
 @bp.route("/index", methods=["GET", "POST"])
 def index():
-    """Default endpoint for the system"""
     return render_template("index.html")
 
-#Endpoint for Login
+# This is the endpoint for the "Sign In" page.
 @bp.route("/sign_in", methods=["GET", "POST"])
 def login():
-    """Default endpoint for the system"""
     return render_template("sign_in.html")
 
-#Endpoint for Register
+# This is the endpoint for the "Sign Up" page.
 @bp.route("/sign_up", methods=["GET", "POST"])
 def register():
-    """Default endpoint for the system"""
     return render_template("sign_up.html")
 
 # This is the endpoint for the "Search for Ratings" page.
