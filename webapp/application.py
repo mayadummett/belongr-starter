@@ -13,17 +13,37 @@ def index():
     return render_template("index.html")
 
 # This is the endpoint for the "Sign In" page.
-@bp.route("/sign_in", methods=["GET", "POST"])
-def login():
-    return render_template("sign_in.html")
+@bp.route("/sign-in", methods=["GET", "POST"])
+def sign_in():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if not email or not password:
+            flash("Password and username required.")
+            return redirect("/login")
+
+        return render_template("index.html")
+    else:
+        return render_template("sign_in.html")
 
 # This is the endpoint for the "Sign Up" page.
-@bp.route("/sign_up", methods=["GET", "POST"])
-def register():
+@bp.route("/sign-up", methods=["GET", "POST"])
+def sign_up():
     return render_template("sign_up.html")
 
+# This is the endpoint for the "Your Ratings" page.
+@bp.route("/your-ratings", methods=["GET", "POST"])
+def your_ratings():
+    return render_template("your_ratings.html")
+
+# This is the endpoint for the "Change Password" page.
+@bp.route("/change-password", methods=["GET", "POST"])
+def change_password():
+    return render_template("change_password.html")
+
 # This is the endpoint for the "Search for Ratings" page.
-@bp.route("/search_for_ratings", methods=["GET", "POST"])
+@bp.route("/search-for-ratings", methods=["GET", "POST"])
 def search_for_ratings():
     if request.method == "POST":
         student_organization_name = request.form.get("student_organization_name")
