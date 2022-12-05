@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, redirect
+from flask import Flask, redirect
 from webapp.database import init_db
 from flask_sqlalchemy import SQLAlchemy
 
@@ -29,7 +29,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return redirect("index.html")
+        return redirect("/index")
 
     from . import application
     app.register_blueprint(application.bp)
