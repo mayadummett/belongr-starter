@@ -131,26 +131,22 @@ def search_for_ratings():
             flash("Student organization name is incorrect.")
             return redirect("/search-for-ratings")
         
-        racial_identity_ratings = db_session.execute("SELECT racial_identity FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        ethnic_identity_ratings = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        gender_identity_ratings = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        racial_identity_statistics = db_session.execute("SELECT AVG(racial_identity), COUNT(racial_identity) FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        ethnic_identity_statistics = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        gender_identity_statistics = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         sexual_orientation_ratings = db_session.execute("SELECT sexual_orientation FROM ratings WHERE sexual_orientation IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         socioeconomic_status_ratings = db_session.execute("SELECT socioeconomic_status FROM ratings WHERE socioeconomic_status IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         religious_identity_ratings = db_session.execute("SELECT religious_identity FROM ratings WHERE religious_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         disability_identity_ratings = db_session.execute("SELECT disability_identity FROM ratings WHERE disability_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
 
-        sum_of_ratings = sum(student_organization_ratings.["racial_identity"].values)
-        mean_of_ratings = db_session.execute("SELECT AVG(ra)")
-        median_of_ratings = 
-        mode_of_ratings = 
-        number_of_ratings = 
-
-        return render_template("ratings.html", student_organization_ratings=student_organization_ratings, student_organization_name=student_organization_name)
+        return render_template("ratings.html")
 
     else:
         return render_template("search_for_ratings.html")
 
 # This is the endpoint for the "Your Ratings" page.
-@bp.route("/your-ratings", methods=["GET", "POST"])
+@bp.route("/your-ratings")
+@sign_in_required
 def your_ratings():
-    return render_template("your_ratings.html")
+    rows = db_session.execute("SELECT student_organization_id, racial_identity, ethnic_identity, gender_identity, sexual_orientation, socioeconomic_status, religious_identity, disability_identity FROM ratings WHERE user_id=:user_id", {'user_id':session["user_id"]})
+    return render_template("your_ratings.html", rows = rows)
