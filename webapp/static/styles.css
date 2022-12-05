@@ -1,25 +1,62 @@
+/* Font styling */
 * {
     font-family: "Poppins", sans-serif;
 }
 
+/* End of Font Styling */
+
+/* Color of links */
 a {
     color: #7EA172;
     text-decoration: none;
 }
 
+/* End of Link Styling */
+
+/* Background Styling */
 #background {
     position: absolute;
     width: 100%;
     left: 0px;
     top: 0px;
 }
+/* End of Background Styling */
+
+/* Body Styling */
 
 body {
     margin-left: 330px;
     margin-top: 100px;
 }
 
-button {
+/* End of Body Styling */
+
+/* Landing Page Image & Text Styling */
+
+.img-and-text-container-landing {
+  text-align: center;
+  color: white;
+}
+
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black;
+  }
+
+  /* End of Landing Page Image & Text Styling   */
+
+
+/* button {
     background-color: #7EA172;
     border: 2px solid #7EA172;
     border-radius: 20px;
@@ -437,4 +474,4 @@ th {
 ::-webkit-input-placeholder {
     line-height: 80px;
 }
-
+ */
