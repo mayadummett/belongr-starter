@@ -45,6 +45,7 @@ def sign_in_required(f):
 
 # This is the endpoint for the "Sign Out" page.
 @bp.route("/sign-out")
+@sign_in_required
 def sign_out():
     session.clear()
     return redirect("/sign-in")
@@ -121,17 +122,21 @@ def change_password():
 def search_for_ratings():
     if request.method == "POST":
         student_organization_name = request.form.get("student_organization_name")
-
-        #if not student_organization_name:
-            #return apology("must enter name of student organization")
-
+        if not student_organization_name:
+            flash("All fields must be completed.")
+            return redirect("/search-for-ratings")
+        
         student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name})
+        if not student_organization_id:
+            flash("Student organization name is incorrect.")
+            return redirect("/search-for-ratings")
         
-        # Return error if no match.
-        #if not stock:
-            #return apology("no stock matches symbol")
-        
-        student_organization_ratings = db_session.execute("SELECT racial_identity_inclusivity, ethnic_identity_inclusivity, gender_identity_inclusivity, sexual_orientation_inclusivity, socioeconomic_status_inclusivity, religious_identity_inclusivity, disability_identity_inclusivity FROM ratings WHERE student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        student_organization_ratings = db_session.execute("SELECT racial_identity, ethnic_identity, gender_identity, sexual_orientation, socioeconomic_status, religious_identity, disability_identity FROM ratings WHERE student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+
+        mean_of_ratings
+        median_
+        modes
+        number_of_ratings
 
         return render_template("ratings.html", student_organization_ratings=student_organization_ratings, student_organization_name=student_organization_name)
 
