@@ -11,36 +11,74 @@ bp = Blueprint('application', __name__, url_prefix='/')
 def index():
     return render_template("index.html")
 
-# # This is the endpoint for the "Sign In" page.
-# @bp.route("/sign-in", methods=["GET", "POST"])
-# def sign_in():
-#     if request.method == "POST":
-#         email = request.form.get("email")
-#         password = request.form.get("password")
+# This is the endpoint for the "Sign In" page.
+@bp.route("/sign-in", methods=["GET", "POST"])
+def sign_in():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
 
-#         if not email or not password:
-#             flash("Email and password are required.")
-#             return redirect("/in")
+        if not email or not password:
+            flash("All fields must be completed.")
+            return redirect("/sign-in")
 
-        
+        rows = db_session.execute("SELECT id, password FROM users WHERE email =:email", {'email':email})
 
-#         return render_template("index.html")
-#     else:
-#         return render_template("sign_in.html")
+        if not rows or not check_password_hash(rows["password"], password):
+            flash("Email and/or password is incorrect.")
+            return redirect("/sign-in")
 
-# # This decorates routes to require successful completion of the "Sign In" page.
-# def sign_in_required(f):
-#     @wraps(f)
-#     def decorated_function(*args, **kwargs):
-#         if session.get("user_id") is None:
-#             return redirect("/sign-in")
-#         return f(*args, **kwargs)
-#     return decorated_function
+        session["user_id"] = rows["id"]
+
+        return redirect("/")
+    else:
+        return render_template("sign_in.html")
+
+# This decorates routes to require successful completion of the "Sign In" page.
+def sign_in_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/sign-in")
+        return f(*args, **kwargs)
+    return decorated_function
+
+# This is the endpoint for the "Sign Out" page.
+@bp.route("/sign-out")
+def sign_out():
+    session.clear()
+    return redirect("/sign-in")
 
 # This is the endpoint for the "Sign Up" page.
 @bp.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    return render_template("sign_up.html")
+    if request.method == "POST":
+        email = request.form.get("email")
+        password_initial = request.form.get("password_initial")
+        password_confirmation = request.form.get("password_confirmation")
+
+        if not (email and password_initial and password_confirmation):
+            flash("All fields must be completed.")
+            return redirect("/sign-up")
+
+        if password_initial != password_confirmation:
+            flash("Passwords do not match.")
+            return redirect("/sign-up")
+        
+        rows = db_session.execute("SELECT id FROM users WHERE email =:email", {'email':email})
+        if rows:
+            flash("Email is already taken.")
+            return redirect("/sign-up")
+        
+        user = User(email=email, password=generate_password_hash(password_initial))
+        db_session.add(user)
+        db_session.commit()
+
+        flash("Success!")
+
+        return redirect("/sign-in")
+    else:
+        return render_template("sign_up.html")
 
 # This is the endpoint for the "Change Password" page.
 @bp.route("/change-password", methods=["GET", "POST"])
