@@ -22,11 +22,25 @@ a {
 }
 /* End of Background Styling */
 
+/* Navigation Bar Styling */
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
 /* Body Styling */
 
 body {
     margin-left: 330px;
     margin-top: 100px;
+    background-image: url("myeventsimages/belongrLanding1.png");
 }
 
 /* End of Body Styling */
@@ -38,11 +52,28 @@ body {
   color: white;
 }
 
+.home_header {
+    text-align: center;
+}
+
+h1.home_header {
+    font-weight: 900;
+    color: rgb(122, 115, 115);
+    position: absolute;
+    top: 25%;
+    margin-left: 50%;
+    margin-right: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 100px;
+   
+}
 
 .centered {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
+
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
@@ -54,6 +85,19 @@ body {
   }
 
   /* End of Landing Page Image & Text Styling   */
+
+  /* Footer Styling */
+
+  footer {
+    text-align: center;
+    align-items: center;
+    /* border-style: solid none none none; */
+    /* border-color: #7B1E7A; */
+    background-color: #128646;
+    padding: 1em 0em 0.25em 0em;
+  }
+
+
 
 
 /* button {
@@ -346,11 +390,6 @@ h1.profile {
 
 /* Landing  */
 
-.home_header {
-    text-align: center;
-    margin-left: -15%;
-}
-
 .landing-buttons {
     display: flex;
     justify-content: center;
@@ -474,4 +513,4 @@ th {
 ::-webkit-input-placeholder {
     line-height: 80px;
 }
- */
+

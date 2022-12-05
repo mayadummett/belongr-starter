@@ -1,29 +1,58 @@
 <!-- Landing Page for Belongr -->
 <!DOCTYPE html>
 
+
 <html lang="en">
 
   <head>
     <link href="/static/styles.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
     <title>Belongr</title>
   </head>
 
   <body id = "homepage">
+<!--Navigation bar-->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Belongr</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search-for-ratings">Search for Ratings</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/rate">Rate</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" href="your-ratings">Your Ratings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sign-up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sign-in">Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    
+<!--end of Navigation bar-->
 
     <div class = "img-and-text-container-landing">
-
-      <img src = "/static/myeventsimages/belongrLanding1.png" alt = "Homepage background" id = "background">
-      <h1>Belongr</h1>
-
+      <!-- <img src = "/static/myeventsimages/belongrLanding1.png" alt = "Homepage background" id = "background"> -->
       <div class = "about-belonger">
-        
-        <p class = "centered">In one survey of university students at a particular institution, almost half of respondents indicated at least one place where they felt marginalized or excluded. Belongr is here to change that. Belongr is a web application for email-verified university students to anonymously see and rate the levels of inclusivity of university-recognized student organizations on their campus in the context of identities such as race, religion, ethnicity, sexual orientation, gender identity, socioeconomic status, and disability. For each university-recognized student organization, Belongr provides for each identity a histogram of inclusivity ratings and their mean, median, and mode as well as the number of ratings. This information does not go public until a club has at least 30 ratings.</p>
+        <h1 class = "home_header" >Belongr</h2>
+        <p class = "centered"> In one survey of university students at a particular institution, almost half of respondents indicated at least one place where they felt marginalized or excluded. Belongr is here to change that. Belongr is a web application for email-verified university students to anonymously see and rate the levels of inclusivity of university-recognized student organizations on their campus in the context of identities such as race, religion, ethnicity, sexual orientation, gender identity, socioeconomic status, and disability. For each university-recognized student organization, Belongr provides for each identity a histogram of inclusivity ratings and their mean, median, and mode as well as the number of ratings. This information does not go public until a club has at least 30 ratings.</p>
       </div>
   </div>
 
-
   </body>
+  
   </html>
 
  
-<!-- Footer -->
