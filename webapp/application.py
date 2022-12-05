@@ -82,8 +82,39 @@ def sign_up():
 
 # This is the endpoint for the "Change Password" page.
 @bp.route("/change-password", methods=["GET", "POST"])
+@sign_in_required
 def change_password():
-    return render_template("change_password.html")
+    if request.method == "POST":
+
+        email = request.form.get("email")
+        old_password = request.form.get("old_password")
+        new_password_initial = request.form.get("new_password_initial")
+        new_password_confirmation = request.form.get("new_password_confirmation")
+    
+        if not (email and old_password and new_password_initial and new_password_confirmation):
+            flash("All fields must be completed.")
+            return redirect("/change-password")
+
+        if new_password_initial != new_password_confirmation:
+            flash("New passwords do not match.")
+            return redirect("/change-password")
+        
+        rows = db_session.execute("SELECT password FROM users WHERE email =:email", {'email':email})
+
+        if not rows or not check_password_hash(rows["password"], old_password):
+            flash("Email and/or old password is incorrect.")
+            return redirect("/change-password")
+        
+        password = generate_password_hash(new_password_initial)
+
+        db_session.execute("UPDATE users SET password =:password WHERE email=:email", {'password':password, 'email':email})
+        db_session.commit()
+
+        flash("Success!")
+
+        return redirect("/sign-in")
+    else:
+        return render_template("change_password.html")
 
 # This is the endpoint for the "Search for Ratings" page.
 @bp.route("/search-for-ratings", methods=["GET", "POST"])
