@@ -1,9 +1,8 @@
-import functools
-
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from webapp.database import db_session
 from webapp.database import User, Student_Organization, Rating
+from functools import wraps
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
@@ -12,20 +11,31 @@ bp = Blueprint('application', __name__, url_prefix='/')
 def index():
     return render_template("index.html")
 
-# This is the endpoint for the "Sign In" page.
-@bp.route("/sign-in", methods=["GET", "POST"])
-def sign_in():
-    if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
+# # This is the endpoint for the "Sign In" page.
+# @bp.route("/sign-in", methods=["GET", "POST"])
+# def sign_in():
+#     if request.method == "POST":
+#         email = request.form.get("email")
+#         password = request.form.get("password")
 
-        if not email or not password:
-            flash("Password and username required.")
-            return redirect("/login")
+#         if not email or not password:
+#             flash("Email and password are required.")
+#             return redirect("/in")
 
-        return render_template("index.html")
-    else:
-        return render_template("sign_in.html")
+        
+
+#         return render_template("index.html")
+#     else:
+#         return render_template("sign_in.html")
+
+# # This decorates routes to require successful completion of the "Sign In" page.
+# def sign_in_required(f):
+#     @wraps(f)
+#     def decorated_function(*args, **kwargs):
+#         if session.get("user_id") is None:
+#             return redirect("/sign-in")
+#         return f(*args, **kwargs)
+#     return decorated_function
 
 # This is the endpoint for the "Sign Up" page.
 @bp.route("/sign-up", methods=["GET", "POST"])
