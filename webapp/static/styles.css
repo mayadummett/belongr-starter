@@ -106,8 +106,19 @@ h1.home_header {
         z-index: 98;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
+/* End of Footer Styling */
 
+/* Search for Ratings Styling */
+.box{
+    width: 100%;
+}
 
+#search {
+    margin: 0 auto;
+    display: block;
+}
+
+/* End of Search for Rating Styling */
 
 
 /* button {
