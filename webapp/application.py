@@ -131,14 +131,42 @@ def search_for_ratings():
             flash("Student organization name is incorrect.")
             return redirect("/search-for-ratings")
         
-        racial_identity_statistics = db_session.execute("SELECT AVG(racial_identity), COUNT(racial_identity) FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        ethnic_identity_statistics = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        gender_identity_statistics = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        racial_identity_ratings = db_session.execute("SELECT racial_identity FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        ethnic_identity_ratings = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        gender_identity_ratings = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         sexual_orientation_ratings = db_session.execute("SELECT sexual_orientation FROM ratings WHERE sexual_orientation IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         socioeconomic_status_ratings = db_session.execute("SELECT socioeconomic_status FROM ratings WHERE socioeconomic_status IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         religious_identity_ratings = db_session.execute("SELECT religious_identity FROM ratings WHERE religious_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         disability_identity_ratings = db_session.execute("SELECT disability_identity FROM ratings WHERE disability_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
 
+        array_of_racial_identity_ratings = []
+        for row in racial_identity_ratings:
+            array_of_racial_identity_ratings.append(row["racial_identity"])
+
+        array_of_ethnic_identity_ratings = []
+        for row in ethnic_identity_ratings:
+            array_of_ethnic_identity_ratings.append(row["ethnic_identity"])
+
+        array_of_gender_identity_ratings = []
+        for row in gender_identity_ratings:
+            array_of_gender_identity_ratings.append(row["gender_identity"])
+        
+        array_of_sexual_orientation_ratings = []
+        for row in sexual_orientation_ratings:
+            array_of_sexual_orientation_ratings.append(row["sexual_orientation"])
+        
+        array_of_socioeconomic_status_ratings = []
+        for row in socioeconomic_status_ratings:
+            array_of_socioeconomic_status_ratings.append(row["socioeconomic_status"])
+        
+        array_of_religious_identity_ratings = []
+        for row in religious_identity_ratings:
+            array_of_religious_identity_ratings.append(row["religious_identity"])
+        
+        array_of_disability_identity_ratings = []
+        for row in disability_identity_ratings:
+            array_of_disability_identity_ratings.append(row["disability_identity"])
+        
         return render_template("ratings.html")
 
     else:
