@@ -4,33 +4,12 @@
 Sign Up
 {% endblock %}
 
-<script>
-    function register(event)
-            {
-                let button = event.target;
-
-                let confirmpswd = document.querySelector('#confirmpswd');
-
-                let originalpswd = document.querySelector('#pswd');
-
-                if (confirmpswd.value != originalpswd.value)
-                {
-                    confirmpswd.style.color = "Red";
-                    document.querySelector('#checkpswd').innerHTML = "Passwords don't match!";
-                }
-                else
-                {
-                    location.replace("/example");
-                }
-            }
-</script>
-
 {% block main %}
-<body id="registerbody">
     <h1 class="search-for-ratings-title">Sign Up</h1>
     <br><br>
 
     <div id = "formbody">
+        <form method = "POST">
         <h2 class = "sign-up-titles">
             Email
             <input id = "email" type="text" class = "textinput" placeholder = "Email address"></input>
@@ -43,13 +22,15 @@ Sign Up
             <div>
                 <h2 class = "sign-up-titles">
                     Confirm Password
-                    <input type="text" class = "textinput" placeholder = "Confirm Password" id="confirmpswd"></input>
-                    <p id="password_confirmation"></p>
+                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password"></input>
+                    <!-- <p id="password_confirmation"></p> -->
                 </h2>
                     <br>
                     <button class = "sign-up-buttons" onclick="register(event)" id="submit">Sign Up</button>
                     <button class = "sign-up-buttons" id="cancel" onclick="window.location.href='/index'">Cancel</button>
             </div>
         </div>
+    </form>
     </div>
+
 {% endblock %}

@@ -4,16 +4,28 @@
   Sign In
 {% endblock %}
 
+{% block main %}
+
+<h1 class="search-for-ratings-title">Sign In</h1>
+<br><br>
+
     <div id = "formbody">
-        <h2>
+        <form method = "GET">
+        <h2 class = "sign-up-titles">
             Email
             <input id = "email" type="text" class = "textinput" placeholder = "Enter Email Address"></input>
         </h2>
-        <h2>
+        <div>
+        <h2 class = "sign-up-titles">
             Password
             <input id = "password" type="text" class = "textinput" placeholder = "Enter Password"></input>
         </h2>
+        </div>
         <br>
-        <button id = "submit" onclick="window.location.href='/index'">Sign In</button>
-        <button id="cancel" onclick="window.location.href='/index'">Cancel</button>
+        <button class = "sign-up-buttons" onclick="window.location.href='/index'">Sign In</button>
+        <button class ="sign-up-buttons" onclick="window.location.href='/index'">Cancel</button>
     </div>
+</form>
+</div>
+
+{% endblock %}
