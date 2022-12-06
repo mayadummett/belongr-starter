@@ -8,15 +8,28 @@
 {% block main %}
 
 <!-- Search Bar -->
-<!-- Code Snippet Credit to Milan Milosev -->
+<!-- Code Snippet Credit to Codepen Code.district-->
 
-<script src = "static/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<!-- <h1 id = "search-for-ratings-title">Search for Ratings</h1> -->
 
-<h1 class = "home_header" id = "ratings-title">Search for Ratings</h2>
-<form id="content">
-    <input type="text" name="input" class="input" id="search-input">
-    <button type="reset" class="search" id="search-btn"></button>
-  </form>
+  <div class="wrapper">
+    <div class="container">
+      <form role="search" method="get" class="search-form form" action="">
+        <label>
+            <span class="screen-reader-text">Search for...</span>
+            <input type="search" class="search-field" placeholder="Type something..." value="" name="s" title="" />
+        </label>
+        <input type="submit" class="search-submit button" value="&#xf002" />
+    </form>
+    </div>
+  </div>
+
+    <!-- <script src="index.js"></script> -->
+    
+  </body>
+</html>
 
 
+  <!-- <script src="static/searchforratings.js"></script> -->
 {% endblock %}
