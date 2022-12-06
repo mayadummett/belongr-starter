@@ -5,30 +5,28 @@ Sign Up
 {% endblock %}
 
 {% block main %}
-    <h1 class="search-for-ratings-title">Sign Up</h1>
-    <br><br>
-
-    <div id = "formbody">
-        <form action = "/sign-up" method = "POST">
-        <h2 class = "sign-up-titles">
-            Email
-            <input id = "email" type="text" class = "textinput" placeholder = "Email address"></input>
-        </h2>
-        <div>
-            <h2 class = "sign-up-titles">
-                Password
-                <input id = "password_initial" type="text" class = "textinput" placeholder = "Password"></input>
-            </h2>
-            <div>
-                <h2 class = "sign-up-titles">
-                    Confirm Password
-                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password"></input>
-                </h2>
-                    <br>
-                    <button class = "sign-up-buttons" type="submit">Sign Up</button>
-                    <!-- <button class = "sign-up-buttons" id="cancel" onclick="window.location.href='/index'">Cancel</button> -->
-            </div>
-        </div>
-    </form>
+<br>
+<div class="col-3 mx-auto bg-dark border border-0 rounded-3">
+  <br>
+  <h3 style="color:white; font-family:'Bungee Shade';font-size: 44px;">Sign Up</h3>
+  <form action="/sign-up" method="POST">
+    <div class="col-10 form-floating mx-auto p-2">
+      <input autocomplete="off" autofocus class="form-control" id="email" name="email" placeholder="Email" type="text">
+      <label for="email">Email</label>
+    </div>
+    <div class="col-10 form-floating mx-auto p-2">
+      <input class="form-control" id="password_initial" name="password" placeholder="Password" type="password">
+      <label for="password_initial">Password</label>
+    </div>
+    <div class="col-10 form-floating mx-auto p-2">
+      <input class="form-control" id="password_confirmation" name="confirmation" placeholder="Confirm Password" type="password">
+      <label for="password_confirmation">Confirm Password</label>
+    </div>
+    <br>
+    <div class="pb-4 mb-3">
+      <button class="btn btn-primary col-10" type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
