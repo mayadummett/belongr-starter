@@ -9,20 +9,20 @@ Sign Up
     <br><br>
 
     <div id = "formbody">
-        <form method = "POST">
+        <form method = "GET">
         <h2 class = "sign-up-titles">
             Email
-            <input id = "email" type="text" class = "textinput" placeholder = "Email address"></input>
+            <input id = "email" type="text" class = "textinput" placeholder = "Email address" value="{{ request.form['email'] }}"></input>
         </h2>
         <div>
             <h2 class = "sign-up-titles">
                 Password
-                <input id = "password_initial" type="text" class = "textinput" placeholder = "Password" id="pswd"></input>
+                <input id = "password" type="text" class = "textinput" placeholder = "Password" value="{{ request.form['password'] }}"></input>
             </h2>
             <div>
                 <h2 class = "sign-up-titles">
                     Confirm Password
-                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password"></input>
+                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password" value="{{ request.form['password_confirmation'] }}"></input>
                     <!-- <p id="password_confirmation"></p> -->
                 </h2>
                     <br>
