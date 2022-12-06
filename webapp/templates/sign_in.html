@@ -1,25 +1,19 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
-<head>
-    <link href="/static/styles.css" rel="stylesheet">
-    <title>Sign In</title>
-</head>
-<body id="loginbody">
-    <h1 id="titlelog">Sign In</h1>
-    <br><br>
+{% block title %}
+  Sign In
+{% endblock %}
+
     <div id = "formbody">
         <h2>
             Email
-            <input type="text" class = "textinput" placeholder = "Enter Email Address"></input>
+            <input id = "email" type="text" class = "textinput" placeholder = "Enter Email Address"></input>
         </h2>
         <h2>
             Password
-            <input type="text" class = "textinput" placeholder = "Enter Password"></input>
+            <input id = "password" type="text" class = "textinput" placeholder = "Enter Password"></input>
         </h2>
         <br>
-        <button id = "submit" onclick="window.location.href='/example'">Sign In</button>
+        <button id = "submit" onclick="window.location.href='/index'">Sign In</button>
         <button id="cancel" onclick="window.location.href='/index'">Cancel</button>
     </div>
-</body>
-</html>
