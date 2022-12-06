@@ -1,6 +1,5 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from werkzeug.utils import secure_filename
 from webapp.database import db_session
 from webapp.database import User, Student_Organization, Rating
 from functools import wraps
@@ -236,15 +235,12 @@ def rate():
         disability_identity_rating = int(request.form.get("disability_identity_rating"))
         
         rating_id = db_session.execute("SELECT id FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
-        if not rating_id:
-            return redirect("/your-ratings")
+        if rating_id:
+            db_session.execute("DELETE FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
         
-        racial_identity_ratings = db_session.execute("SELECT racial_identity FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        ethnic_identity_ratings = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        gender_identity_ratings = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        sexual_orientation_ratings = db_session.execute("SELECT sexual_orientation FROM ratings WHERE sexual_orientation IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        socioeconomic_status_ratings = db_session.execute("SELECT socioeconomic_status FROM ratings WHERE socioeconomic_status IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
-        religious_identity_ratings = db_session.execute("SELECT religious_identity FROM ratings WHERE religious_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        rating = Rating(user_id=session["user_id"], student_organization_id=student_organization_id, racial_identity=racial_identity_rating, ethnic_identity=ethnic_identity_rating, gender_identity=gender_identity_rating, sexual_orientation=sexual_orientation_rating, socioeconomic_status=socioeconomic_status_rating, religious_identity=religious_identity_rating, disability_identity=disability_identity_rating)
+        db_session.add(rating)
+        db_session.commit()
 
         flash("Success!")
 
