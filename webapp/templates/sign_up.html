@@ -9,25 +9,24 @@ Sign Up
     <br><br>
 
     <div id = "formbody">
-        <form method = "GET">
+        <form action = "/sign-up" method = "POST">
         <h2 class = "sign-up-titles">
             Email
-            <input id = "email" type="text" class = "textinput" placeholder = "Email address" value="{{ request.form['email'] }}"></input>
+            <input id = "email" type="text" class = "textinput" placeholder = "Email address"></input>
         </h2>
         <div>
             <h2 class = "sign-up-titles">
                 Password
-                <input id = "password" type="text" class = "textinput" placeholder = "Password" value="{{ request.form['password'] }}"></input>
+                <input id = "password_initial" type="text" class = "textinput" placeholder = "Password"></input>
             </h2>
             <div>
                 <h2 class = "sign-up-titles">
                     Confirm Password
-                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password" value="{{ request.form['password_confirmation'] }}"></input>
-                    <!-- <p id="password_confirmation"></p> -->
+                    <input id = "password_confirmation" type="text" class = "textinput" placeholder = "Confirm Password"></input>
                 </h2>
                     <br>
-                    <button class = "sign-up-buttons" onclick="register(event)" id="submit">Sign Up</button>
-                    <button class = "sign-up-buttons" id="cancel" onclick="window.location.href='/index'">Cancel</button>
+                    <button class = "sign-up-buttons" type="submit">Sign Up</button>
+                    <!-- <button class = "sign-up-buttons" id="cancel" onclick="window.location.href='/index'">Cancel</button> -->
             </div>
         </div>
     </form>

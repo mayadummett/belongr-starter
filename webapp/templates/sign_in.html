@@ -10,20 +10,20 @@
 <br><br>
 
     <div id = "formbody">
-        <form method = "GET">
+        <form action = "/sign-in" method = "POST">
         <h2 class = "sign-up-titles">
             Email
-            <input id = "email" type="text" class = "textinput" placeholder = "Enter Email Address" value="{{ request.form['email'] }}"></input>
+            <input id = "email" type="text" class = "textinput" placeholder = "Enter Email Address"></input>
         </h2>
         <div>
         <h2 class = "sign-up-titles">
             Password
-            <input id = "password" type="text" class = "textinput" placeholder = "Enter Password" value="{{ request.form['password'] }}"></input>
+            <input id = "password" type="text" class = "textinput" placeholder = "Enter Password"></input>
         </h2>
         </div>
         <br>
-        <button class = "sign-up-buttons" onclick="window.location.href='/index'">Sign In</button>
-        <button class ="sign-up-buttons" onclick="window.location.href='/index'">Cancel</button>
+        <button class = "sign-up-buttons" type = "submit">Sign In</button>
+        <!-- <button class ="sign-up-buttons" onclick="window.location.href='/index'">Cancel</button> -->
     </div>
 </form>
 </div>
