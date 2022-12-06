@@ -48,6 +48,18 @@
     
 <!--end of Navigation bar-->
 
+<!-- Flashes messages -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<!-- end of flash area -->
+
 {% block main %} 
 {% endblock %}
 

@@ -26,7 +26,7 @@ def sign_in():
             flash("All fields must be completed.")
             return redirect("/sign-in")
 
-        rows = db_session.execute("SELECT id, password FROM users WHERE email =:email", {'email':email})
+        rows = db_session.execute("SELECT id, password FROM users WHERE email =:email", {'email':email}).first()
 
         if not rows or not check_password_hash(rows["password"], password):
             flash("Email and/or password is incorrect.")
@@ -70,7 +70,7 @@ def sign_up():
             flash("Passwords do not match.")
             return redirect("/sign-up")
         
-        rows = db_session.execute("SELECT id FROM users WHERE email =:email", {'email':email})
+        rows = db_session.execute("SELECT id FROM users WHERE email =:email",{'email':email}).first()
         if rows:
             flash("Email is already taken.")
             return redirect("/sign-up")
@@ -104,7 +104,7 @@ def change_password():
             flash("New passwords do not match.")
             return redirect("/change-password")
         
-        rows = db_session.execute("SELECT password FROM users WHERE email =:email", {'email':email})
+        rows = db_session.execute("SELECT password FROM users WHERE email =:email", {'email':email}).first()
 
         if not rows or not check_password_hash(rows["password"], old_password):
             flash("Email and/or old password is incorrect.")
@@ -130,7 +130,7 @@ def search_for_ratings():
             flash("Student organization name field must be completed.")
             return redirect("/search-for-ratings")
         
-        student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name})
+        student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name}).first()
         if not student_organization_id:
             flash("Student organization name is incorrect.")
             return redirect("/search-for-ratings")
@@ -221,7 +221,7 @@ def rate():
             flash("Student organization name field must be completed.")
             return redirect("/rate")
         
-        student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name})
+        student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name}).first()
         if not student_organization_id:
             flash("Student organization name is incorrect.")
             return redirect("/rate")
@@ -234,7 +234,7 @@ def rate():
         religious_identity_rating = int(request.form.get("religious_identity_rating"))
         disability_identity_rating = int(request.form.get("disability_identity_rating"))
         
-        rating_id = db_session.execute("SELECT id FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
+        rating_id = db_session.execute("SELECT id FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]}).first()
         if rating_id:
             db_session.execute("DELETE FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
         
