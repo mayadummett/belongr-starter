@@ -1,9 +1,11 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.utils import secure_filename
 from webapp.database import db_session
 from webapp.database import User, Student_Organization, Rating
 from functools import wraps
 from numpy import median, mean
+import matplotlib.pyplot as plt
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
@@ -126,7 +128,7 @@ def search_for_ratings():
     if request.method == "POST":
         student_organization_name = request.form.get("student_organization_name")
         if not student_organization_name:
-            flash("All fields must be completed.")
+            flash("Student organization name field must be completed.")
             return redirect("/search-for-ratings")
         
         student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name})
@@ -147,32 +149,58 @@ def search_for_ratings():
             array_of_racial_identity_ratings.append(row["racial_identity"])
         median_of_racial_identity_ratings = median(array_of_racial_identity_ratings)
         mean_of_racial_identity_ratings = mean(array_of_racial_identity_ratings)
+        plt.hist(array_of_racial_identity_ratings)
+        plt.savefig('temporary_histograms/histogram_of_racial_identity_ratings.png')
 
         array_of_ethnic_identity_ratings = []
         for row in ethnic_identity_ratings:
             array_of_ethnic_identity_ratings.append(row["ethnic_identity"])
+        median_of_ethnic_identity_ratings = median(array_of_ethnic_identity_ratings)
+        mean_of_ethnic_identity_ratings = mean(array_of_ethnic_identity_ratings)
+        plt.hist(array_of_ethnic_identity_ratings)
+        plt.savefig('temporary_histograms/histogram_of_ethnic_identity_ratings.png')
 
         array_of_gender_identity_ratings = []
         for row in gender_identity_ratings:
             array_of_gender_identity_ratings.append(row["gender_identity"])
+        median_of_gender_identity_ratings = median(array_of_gender_identity_ratings)
+        mean_of_gender_identity_ratings = mean(array_of_gender_identity_ratings)
+        plt.hist(array_of_gender_identity_ratings)
+        plt.savefig('temporary_histograms/histogram_of_gender_identity_ratings.png')
         
         array_of_sexual_orientation_ratings = []
         for row in sexual_orientation_ratings:
             array_of_sexual_orientation_ratings.append(row["sexual_orientation"])
+        median_of_sexual_orientation_ratings = median(array_of_sexual_orientation_ratings)
+        mean_of_sexual_orientation_ratings = mean(array_of_sexual_orientation_ratings)
+        plt.hist(array_of_sexual_orientation_ratings)
+        plt.savefig('temporary_histograms/histogram_of_sexual_orientation_ratings.png')
         
         array_of_socioeconomic_status_ratings = []
         for row in socioeconomic_status_ratings:
             array_of_socioeconomic_status_ratings.append(row["socioeconomic_status"])
+        median_of_socioeconomic_status_ratings = median(array_of_socioeconomic_status_ratings)
+        mean_of_socioeconomic_status_ratings = mean(array_of_socioeconomic_status_ratings)
+        plt.hist(array_of_socioeconomic_status_ratings)
+        plt.savefig('temporary_histograms/histogram_of_socioeconomic_status_ratings.png')
         
         array_of_religious_identity_ratings = []
         for row in religious_identity_ratings:
             array_of_religious_identity_ratings.append(row["religious_identity"])
+        median_of_religious_identity_ratings = median(array_of_religious_identity_ratings)
+        mean_of_religious_identity_ratings = mean(array_of_religious_identity_ratings)
+        plt.hist(array_of_religious_identity_ratings)
+        plt.savefig('temporary_histograms/histogram_of_religious_identity_ratings.png')
         
         array_of_disability_identity_ratings = []
         for row in disability_identity_ratings:
             array_of_disability_identity_ratings.append(row["disability_identity"])
+        median_of_disability_identity_ratings = median(array_of_disability_identity_ratings)
+        mean_of_disability_identity_ratings = mean(array_of_disability_identity_ratings)
+        plt.hist(array_of_disability_identity_ratings)
+        plt.savefig('temporary_histograms/histogram_of_disability_identity_ratings.png')
         
-        return render_template("ratings.html", student_organization_name=student_organization_name)
+        return render_template("ratings.html", student_organization_name=student_organization_name, median_of_racial_identity_ratings=median_of_racial_identity_ratings, mean_of_racial_identity_ratings=mean_of_racial_identity_ratings, median_of_ethnic_identity_ratings=median_of_ethnic_identity_ratings, mean_of_ethnic_identity_ratings=mean_of_ethnic_identity_ratings, median_of_gender_identity_ratings=median_of_gender_identity_ratings, mean_of_gender_identity_ratings=mean_of_gender_identity_ratings, median_of_sexual_orientation_ratings=median_of_sexual_orientation_ratings, mean_of_sexual_orientation_ratings=mean_of_sexual_orientation_ratings, median_of_socioeconomic_status_ratings=median_of_socioeconomic_status_ratings, mean_of_socioeconomic_status_ratings=mean_of_socioeconomic_status_ratings, median_of_religious_identity_ratings=median_of_religious_identity_ratings, mean_of_religious_identity_ratings=mean_of_religious_identity_ratings, median_of_disability_identity_ratings=median_of_disability_identity_ratings, mean_of_disability_identity_ratings=mean_of_disability_identity_ratings)
 
     else:
         return render_template("search_for_ratings.html")
@@ -183,3 +211,43 @@ def search_for_ratings():
 def your_ratings():
     rows = db_session.execute("SELECT student_organization_id, racial_identity, ethnic_identity, gender_identity, sexual_orientation, socioeconomic_status, religious_identity, disability_identity FROM ratings WHERE user_id=:user_id", {'user_id':session["user_id"]})
     return render_template("your_ratings.html", rows = rows)
+
+# This is the endpoint for the "Rate" page.
+@bp.route("/rate")
+@sign_in_required
+def rate():
+    if request.method == "POST":
+        student_organization_name = request.form.get("student_organization_name")
+        if not student_organization_name:
+            flash("Student organization name field must be completed.")
+            return redirect("/rate")
+        
+        student_organization_id = db_session.execute("SELECT id FROM student_organizations WHERE name =:student_organization_name", {'student_organization_name':student_organization_name})
+        if not student_organization_id:
+            flash("Student organization name is incorrect.")
+            return redirect("/rate")
+        
+        racial_identity_rating = int(request.form.get("racial_identity_rating"))
+        ethnic_identity_rating = int(request.form.get("ethnic_identity_rating"))
+        gender_identity_rating = int(request.form.get("gender_identity_rating"))
+        sexual_orientation_rating = int(request.form.get("sexual_orientation_rating"))
+        socioeconomic_status_rating = int(request.form.get("socioeconomic_status_rating"))
+        religious_identity_rating = int(request.form.get("religious_identity_rating"))
+        disability_identity_rating = int(request.form.get("disability_identity_rating"))
+        
+        rating_id = db_session.execute("SELECT id FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
+        if not rating_id:
+            return redirect("/your-ratings")
+        
+        racial_identity_ratings = db_session.execute("SELECT racial_identity FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        ethnic_identity_ratings = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        gender_identity_ratings = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        sexual_orientation_ratings = db_session.execute("SELECT sexual_orientation FROM ratings WHERE sexual_orientation IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        socioeconomic_status_ratings = db_session.execute("SELECT socioeconomic_status FROM ratings WHERE socioeconomic_status IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+        religious_identity_ratings = db_session.execute("SELECT religious_identity FROM ratings WHERE religious_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
+
+        flash("Success!")
+
+        return redirect("/your-ratings")
+    else:
+        return render_template("rate.html")
