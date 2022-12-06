@@ -254,7 +254,6 @@ h1.home_header {
 #formbody {
     margin-top: 20%;
     margin-left: 20%;
-    margin-right: 20%;
     margin-bottom: 20%;
 }
 
@@ -305,4 +304,9 @@ h1.home_header {
     outline: none;
   }
   
+  .sign-up-buttons {
+      border-radius: 8px;
+      font-size: 20px;
+      color: #128646;
+  }
   /* End of Sign Up Form Styling */
