@@ -3,6 +3,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from webapp.database import db_session
 from webapp.database import User, Student_Organization, Rating
 from functools import wraps
+from numpy import median, mean
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
@@ -14,6 +15,8 @@ def index():
 # This is the endpoint for the "Sign In" page.
 @bp.route("/sign-in", methods=["GET", "POST"])
 def sign_in():
+    session.clear()
+    
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
@@ -142,6 +145,8 @@ def search_for_ratings():
         array_of_racial_identity_ratings = []
         for row in racial_identity_ratings:
             array_of_racial_identity_ratings.append(row["racial_identity"])
+        median_of_racial_identity_ratings = median(array_of_racial_identity_ratings)
+        mean_of_racial_identity_ratings = mean(array_of_racial_identity_ratings)
 
         array_of_ethnic_identity_ratings = []
         for row in ethnic_identity_ratings:
@@ -167,7 +172,7 @@ def search_for_ratings():
         for row in disability_identity_ratings:
             array_of_disability_identity_ratings.append(row["disability_identity"])
         
-        return render_template("ratings.html")
+        return render_template("ratings.html", student_organization_name=student_organization_name)
 
     else:
         return render_template("search_for_ratings.html")
