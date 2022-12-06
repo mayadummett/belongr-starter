@@ -7,9 +7,16 @@
 
 {% block main %}
 
-<div class="box">
-    <input type="search" id="search" placeholder="Search" />
-</div>
+<!-- Search Bar -->
+<!-- Code Snippet Credit to Milan Milosev -->
+
+<script src = "static/main.js"></script>
+
+<h1 class = "home_header" id = "ratings-title">Search for Ratings</h2>
+<form id="content">
+    <input type="text" name="input" class="input" id="search-input">
+    <button type="reset" class="search" id="search-btn"></button>
+  </form>
 
 
 {% endblock %}
