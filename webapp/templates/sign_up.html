@@ -25,25 +25,26 @@ Sign Up
             }
 </script>
 
-
+{% block main %}
 <body id="registerbody">
-    <h1 id="titlereg">Sign Up</h1>
+    <h1 class="search-for-ratings-title">Sign Up</h1>
     <br><br>
+
     <div id = "formbody">
-        <h2>
+        <h2 class = "sign-up-titles">
             Email
-            <input type="text" class = "textinput" placeholder = "Email"></input>
+            <input id = "email" type="text" class = "textinput" placeholder = "Email address"></input>
         </h2>
         <div>
-            <h2>
+            <h2 class = "sign-up-titles">
                 Password
-                <input type="text" class = "textinput" placeholder = "Password" id="pswd"></input>
+                <input id = "password_initial" type="text" class = "textinput" placeholder = "Password" id="pswd"></input>
             </h2>
             <div>
-                <h2>
+                <h2 class = "sign-up-titles">
                     Confirm Password
                     <input type="text" class = "textinput" placeholder = "Confirm Password" id="confirmpswd"></input>
-                    <p id="checkpswd"></p>
+                    <p id="password_confirmation"></p>
                 </h2>
                     <br>
                     <button onclick="register(event)" id="submit">Sign Up</button>
@@ -51,5 +52,4 @@ Sign Up
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
