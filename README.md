@@ -8,7 +8,7 @@ Belongr is a web application for email-verified university students to anonymous
 
 ## Builders of Belongr
 
-Belongr was programmed by Drake Du and Maya Dummett with some code from the Exploration Team of [Tech for Social Good of the Harvard Computer Society](https://socialgood.hcs.harvard.edu/). Further documentation can be accessed [here]().
+Belongr was programmed by Drake Du and Maya Dummett with the stack from the Exploration Team of [Tech for Social Good of the Harvard Computer Society](https://socialgood.hcs.harvard.edu/). Further documentation can be accessed [here](https://youtu.be/pfeJBSlsuCw).
 
 ## Getting Started
 
