@@ -5,6 +5,7 @@ from webapp.database import User, Rating
 from functools import wraps
 from numpy import median, mean
 import matplotlib.pyplot as plt
+import os
 
 bp = Blueprint('application', __name__, url_prefix='/')
 
@@ -150,56 +151,98 @@ def search_for_ratings():
             array_of_racial_identity_ratings.append(row["racial_identity"])
         median_of_racial_identity_ratings = median(array_of_racial_identity_ratings)
         mean_of_racial_identity_ratings = mean(array_of_racial_identity_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_racial_identity_ratings)
-        plt.savefig('temporary_histograms/histogram_of_racial_identity_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_racial_identity_ratings.png"
+        plt.savefig(path)
 
         array_of_ethnic_identity_ratings = []
         for row in ethnic_identity_ratings:
             array_of_ethnic_identity_ratings.append(row["ethnic_identity"])
         median_of_ethnic_identity_ratings = median(array_of_ethnic_identity_ratings)
         mean_of_ethnic_identity_ratings = mean(array_of_ethnic_identity_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_ethnic_identity_ratings)
-        plt.savefig('temporary_histograms/histogram_of_ethnic_identity_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_ethnic_identity_ratings.png"
+        plt.savefig(path)
 
         array_of_gender_identity_ratings = []
         for row in gender_identity_ratings:
             array_of_gender_identity_ratings.append(row["gender_identity"])
         median_of_gender_identity_ratings = median(array_of_gender_identity_ratings)
         mean_of_gender_identity_ratings = mean(array_of_gender_identity_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_gender_identity_ratings)
-        plt.savefig('temporary_histograms/histogram_of_gender_identity_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_gender_identity_ratings.png"
+        plt.savefig(path)
         
         array_of_sexual_orientation_ratings = []
         for row in sexual_orientation_ratings:
             array_of_sexual_orientation_ratings.append(row["sexual_orientation"])
         median_of_sexual_orientation_ratings = median(array_of_sexual_orientation_ratings)
         mean_of_sexual_orientation_ratings = mean(array_of_sexual_orientation_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_sexual_orientation_ratings)
-        plt.savefig('temporary_histograms/histogram_of_sexual_orientation_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_sexual_orientation_ratings.png"
+        plt.savefig(path)
         
         array_of_socioeconomic_status_ratings = []
         for row in socioeconomic_status_ratings:
             array_of_socioeconomic_status_ratings.append(row["socioeconomic_status"])
         median_of_socioeconomic_status_ratings = median(array_of_socioeconomic_status_ratings)
         mean_of_socioeconomic_status_ratings = mean(array_of_socioeconomic_status_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_socioeconomic_status_ratings)
-        plt.savefig('temporary_histograms/histogram_of_socioeconomic_status_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_socioeconomic_status_ratings.png"
+        plt.savefig(path)
         
         array_of_religious_identity_ratings = []
         for row in religious_identity_ratings:
             array_of_religious_identity_ratings.append(row["religious_identity"])
         median_of_religious_identity_ratings = median(array_of_religious_identity_ratings)
         mean_of_religious_identity_ratings = mean(array_of_religious_identity_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_religious_identity_ratings)
-        plt.savefig('temporary_histograms/histogram_of_religious_identity_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_religious_identity_ratings.png"
+        plt.savefig(path)
         
         array_of_disability_identity_ratings = []
         for row in disability_identity_ratings:
             array_of_disability_identity_ratings.append(row["disability_identity"])
         median_of_disability_identity_ratings = median(array_of_disability_identity_ratings)
         mean_of_disability_identity_ratings = mean(array_of_disability_identity_ratings)
+        plt.switch_backend('Agg')
         plt.hist(array_of_disability_identity_ratings)
-        plt.savefig('temporary_histograms/histogram_of_disability_identity_ratings.png')
+        path = os.path.abspath(__file__)
+        path = path.split("/")
+        path = path[:-1]
+        path = "/".join(path)
+        path += "/static/temporary_histograms/histogram_of_disability_identity_ratings.png"
+        plt.savefig(path)
         
         return render_template("ratings.html", student_organization_name=student_organization_name, median_of_racial_identity_ratings=median_of_racial_identity_ratings, mean_of_racial_identity_ratings=mean_of_racial_identity_ratings, median_of_ethnic_identity_ratings=median_of_ethnic_identity_ratings, mean_of_ethnic_identity_ratings=mean_of_ethnic_identity_ratings, median_of_gender_identity_ratings=median_of_gender_identity_ratings, mean_of_gender_identity_ratings=mean_of_gender_identity_ratings, median_of_sexual_orientation_ratings=median_of_sexual_orientation_ratings, mean_of_sexual_orientation_ratings=mean_of_sexual_orientation_ratings, median_of_socioeconomic_status_ratings=median_of_socioeconomic_status_ratings, mean_of_socioeconomic_status_ratings=mean_of_socioeconomic_status_ratings, median_of_religious_identity_ratings=median_of_religious_identity_ratings, mean_of_religious_identity_ratings=mean_of_religious_identity_ratings, median_of_disability_identity_ratings=median_of_disability_identity_ratings, mean_of_disability_identity_ratings=mean_of_disability_identity_ratings)
 
