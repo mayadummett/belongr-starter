@@ -146,6 +146,76 @@ def search_for_ratings():
         religious_identity_ratings = db_session.execute("SELECT religious_identity FROM ratings WHERE religious_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         disability_identity_ratings = db_session.execute("SELECT disability_identity FROM ratings WHERE disability_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
 
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_racial_identity_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+    
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_ethnic_identity_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+    
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_gender_identity_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+        
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_sexual_orientation_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_socioeconomic_status_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_religious_identity_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+    
+        try:
+            path = os.path.abspath(__file__)
+            path = path.split("/")
+            path = path[:-1]
+            path = "/".join(path)
+            path += "/static/temporary_histograms/histogram_of_disability_identity_ratings.png"
+            os.remove(path)
+        except OSError:
+            pass
+    
         array_of_racial_identity_ratings = []
         for row in racial_identity_ratings:
             array_of_racial_identity_ratings.append(row["racial_identity"])
@@ -243,9 +313,8 @@ def search_for_ratings():
         path = "/".join(path)
         path += "/static/temporary_histograms/histogram_of_disability_identity_ratings.png"
         plt.savefig(path)
-        
-        return render_template("ratings.html", student_organization_name=student_organization_name, median_of_racial_identity_ratings=median_of_racial_identity_ratings, mean_of_racial_identity_ratings=mean_of_racial_identity_ratings, median_of_ethnic_identity_ratings=median_of_ethnic_identity_ratings, mean_of_ethnic_identity_ratings=mean_of_ethnic_identity_ratings, median_of_gender_identity_ratings=median_of_gender_identity_ratings, mean_of_gender_identity_ratings=mean_of_gender_identity_ratings, median_of_sexual_orientation_ratings=median_of_sexual_orientation_ratings, mean_of_sexual_orientation_ratings=mean_of_sexual_orientation_ratings, median_of_socioeconomic_status_ratings=median_of_socioeconomic_status_ratings, mean_of_socioeconomic_status_ratings=mean_of_socioeconomic_status_ratings, median_of_religious_identity_ratings=median_of_religious_identity_ratings, mean_of_religious_identity_ratings=mean_of_religious_identity_ratings, median_of_disability_identity_ratings=median_of_disability_identity_ratings, mean_of_disability_identity_ratings=mean_of_disability_identity_ratings)
 
+        return render_template("ratings.html", student_organization_name=student_organization_name, median_of_racial_identity_ratings=median_of_racial_identity_ratings, mean_of_racial_identity_ratings=mean_of_racial_identity_ratings, median_of_ethnic_identity_ratings=median_of_ethnic_identity_ratings, mean_of_ethnic_identity_ratings=mean_of_ethnic_identity_ratings, median_of_gender_identity_ratings=median_of_gender_identity_ratings, mean_of_gender_identity_ratings=mean_of_gender_identity_ratings, median_of_sexual_orientation_ratings=median_of_sexual_orientation_ratings, mean_of_sexual_orientation_ratings=mean_of_sexual_orientation_ratings, median_of_socioeconomic_status_ratings=median_of_socioeconomic_status_ratings, mean_of_socioeconomic_status_ratings=mean_of_socioeconomic_status_ratings, median_of_religious_identity_ratings=median_of_religious_identity_ratings, mean_of_religious_identity_ratings=mean_of_religious_identity_ratings, median_of_disability_identity_ratings=median_of_disability_identity_ratings, mean_of_disability_identity_ratings=mean_of_disability_identity_ratings)
     else:
         return render_template("search_for_ratings.html")
 
