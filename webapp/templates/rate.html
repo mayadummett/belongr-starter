@@ -3,3 +3,43 @@
 {% block title %}
   Rate
 {% endblock %}
+
+<h1 class="search-for-ratings-title">Rate</h1>
+<br><br>
+
+    <div id = "formbody">
+        <form action = "/sign-in" method = "POST">
+        <h2 class = "sign-up-titles">
+            Student Organization Name
+            <input id = "student_organization_name" name = "student_organization_name" type="text" class = "textinput" placeholder = "Enter Name"></input>
+        </h2>
+        <div>
+        <h2 class = "sign-up-titles">
+            Racial Identity Rating
+            <input id = "racial_identity_rating" name = "racial_identity_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        </div>
+        <h2 class = "sign-up-titles">
+          Ethnic Identity Rating
+          <input id = "ethnic_identity_rating" name = "ethnic_identity_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        <h2 class = "sign-up-titles">
+          Sexual Orientation Rating
+          <input id = "sexual_orientation_rating" name = "sexual_orientation_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        <h2 class = "sign-up-titles">
+          Socioeconomic Status Rating
+          <input id = "socioeconomic_status_rating" name = "socioeconomic_status_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        <h2 class = "sign-up-titles">
+          Religious Identity Rating
+          <input id = "religious_identity_rating" name = "religious_identity_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        <h2 class = "sign-up-titles">
+          Disability Identity Rating
+          <input id = "disability_identity_rating" name = "disability_identity_rating" type="text" class = "textinput" placeholder = "Enter Rating 1-9"></input>
+        </h2>
+        <button class = "sign-up-buttons" type = "submit">Submit</button>
+        <!-- <button class ="sign-up-buttons" onclick="window.location.href='/index'">Cancel</button> -->
+    </div>
+</form>
