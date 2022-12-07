@@ -212,7 +212,7 @@ def your_ratings():
     return render_template("your_ratings.html", rows = rows)
 
 # This is the endpoint for the "Rate" page.
-@bp.route("/rate")
+@bp.route("/rate", methods=["GET", "POST"])
 @sign_in_required
 def rate():
     if request.method == "POST":
