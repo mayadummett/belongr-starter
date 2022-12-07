@@ -34,7 +34,7 @@ To access Belongr, find and copy from terminal the address http://127.0.0.1:5000
 
 ## View Inclusivity Ratings
 
-To view inclusivity ratings, you do not need to sign up for an account! All you have to do is simply click the "Search for Ratings" button in the navigation bar and input the student organization name for which you are looking for inclusivity ratings!
+To view inclusivity ratings, you do not need to sign up for an account! All you have to do is simply click the "Search for Ratings" button in the navigation bar and input the student organization name for which you are looking for inclusivity ratings! For this version of Belongr, the only student organization name supported is "Harvard Computer Society" exactly as written.
 
 ## Provide Inclusivity Ratings
 
