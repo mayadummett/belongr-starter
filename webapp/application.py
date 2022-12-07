@@ -1,7 +1,7 @@
-from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, redirect, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from webapp.database import db_session
-from webapp.database import User, Student_Organization, Rating
+from webapp.database import User, Rating
 from functools import wraps
 from numpy import median, mean
 import matplotlib.pyplot as plt
