@@ -3,3 +3,36 @@
 {% block title %}
   Ratings
 {% endblock %}
+
+{% block main %}
+  <div>
+    <h1>Median of Racial Identity Ratings: {{ median_of_racial_identity_ratings }}</h1>
+    <h1>Mean of Racial Identity Ratings: {{ mean_of_racial_identity_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_racial_identity_ratings.png">
+
+    <h1>Median of Ethnic Identity Ratings: {{ median_of_ethnic_identity_ratings }}</h1>
+    <h1>Mean of Ethnic Identity Ratings: {{ mean_of_ethnic_identity_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_ethnic_identity_ratings.png">
+
+    <h1>Median of Gender Identity Ratings: {{ median_of_gender_identity_ratings }}</h1>
+    <h1>Mean of Gender Identity Ratings: {{ mean_of_gender_identity_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_gender_identity_ratings.png">
+
+    <h1>Median of Sexual Orientation Ratings: {{ median_of_sexual_orientation_ratings }}</h1>
+    <h1>Mean of Sexual Orientation Ratings: {{ mean_of_sexual_orientation_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_sexual_orientation_ratings.png">
+
+    <h1>Median of Socioeconomic Status Ratings: {{ median_of_socioeconomic_status_ratings }}</h1>
+    <h1>Mean of Socioeconomic Status Ratings: {{ mean_of_socioeconomic_status_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_socioeconomic_status_ratings.png">
+
+    <h1>Median of Religious Identity Ratings: {{ median_of_religious_identity_ratings }}</h1>
+    <h1>Mean of Religious Identity Ratings: {{ mean_of_religious_identity_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_religious_identity_ratings.png">
+
+    <h1>Median of Disability Identity Ratings: {{ median_of_disability_identity_ratings }}</h1>
+    <h1>Mean of Disability Identity Ratings: {{ mean_of_disability_identity_ratings }}</h1>
+    <img src = "/static/temporary_histograms/histogram_of_disability_identity_ratings.png">
+
+  </div>
+{% endblock %}
