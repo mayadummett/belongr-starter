@@ -135,6 +135,8 @@ def search_for_ratings():
             flash("Student organization name is incorrect.")
             return redirect("/search-for-ratings")
         
+        student_organization_id = student_organization_id["id"]
+        
         racial_identity_ratings = db_session.execute("SELECT racial_identity FROM ratings WHERE racial_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         ethnic_identity_ratings = db_session.execute("SELECT ethnic_identity FROM ratings WHERE ethnic_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
         gender_identity_ratings = db_session.execute("SELECT gender_identity FROM ratings WHERE gender_identity IS NOT NULL AND student_organization_id =:student_organization_id", {'student_organization_id':student_organization_id})
@@ -226,6 +228,8 @@ def rate():
             flash("Student organization name is incorrect.")
             return redirect("/rate")
         
+        student_organization_id = student_organization_id["id"]
+        
         racial_identity_rating = int(request.form.get("racial_identity_rating"))
         ethnic_identity_rating = int(request.form.get("ethnic_identity_rating"))
         gender_identity_rating = int(request.form.get("gender_identity_rating"))
@@ -237,7 +241,7 @@ def rate():
         rating_id = db_session.execute("SELECT id FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]}).first()
         if rating_id:
             db_session.execute("DELETE FROM ratings WHERE student_organization_id =:student_organization_id AND user_id=:user_id", {'student_organization_id':student_organization_id, 'user_id':session["user_id"]})
-        
+
         rating = Rating(user_id=session["user_id"], student_organization_id=student_organization_id, racial_identity=racial_identity_rating, ethnic_identity=ethnic_identity_rating, gender_identity=gender_identity_rating, sexual_orientation=sexual_orientation_rating, socioeconomic_status=socioeconomic_status_rating, religious_identity=religious_identity_rating, disability_identity=disability_identity_rating)
         db_session.add(rating)
         db_session.commit()
