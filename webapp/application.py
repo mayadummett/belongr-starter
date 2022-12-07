@@ -322,8 +322,8 @@ def search_for_ratings():
 @bp.route("/your-ratings")
 @sign_in_required
 def your_ratings():
-    rows = db_session.execute("SELECT student_organization_id, racial_identity, ethnic_identity, gender_identity, sexual_orientation, socioeconomic_status, religious_identity, disability_identity FROM ratings WHERE user_id=:user_id", {'user_id':session["user_id"]})
-    return render_template("your_ratings.html", rows = rows)
+    rows = db_session.execute("SELECT name, racial_identity, ethnic_identity, gender_identity, sexual_orientation, socioeconomic_status, religious_identity, disability_identity FROM ratings JOIN student_organizations ON student_organizations.id=ratings.student_organization_id WHERE user_id=:user_id", {'user_id':session["user_id"]})
+    return render_template("your_ratings.html", rows = rows, )
 
 # This is the endpoint for the "Rate" page.
 @bp.route("/rate", methods=["GET", "POST"])

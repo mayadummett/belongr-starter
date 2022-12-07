@@ -3,3 +3,12 @@
 {% block title %}
   Your Ratings
 {% endblock %}
+
+{% block main %}
+  <div>
+    {% for row in rows %}
+      <h1 style="color:white;">Name, Race, Ethnicity, Gender, Orientation, Socioeconomic, Religion, Disability</h1>
+      <h1 style="color:white;">{{ row }}</h1>
+    {% endfor %}
+  </div>
+{% endblock %}
